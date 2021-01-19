@@ -1,6 +1,6 @@
 // 参考资料：https://studygolang.com/articles/28241?fr=sidebar
 package util
-//
+
 //import (
 //	"fmt"
 //	"github.com/micro/go-micro/client/selector"
