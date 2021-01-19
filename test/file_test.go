@@ -1,7 +1,7 @@
 package test
 
 import (
-	"github.com/xinlianit/go-util/util"
+	"github.com/xinlianit/go-util"
 	"testing"
 )
 
