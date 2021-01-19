@@ -1,1 +1,0 @@
-go test -v 依赖文件 -test.run 方法名
