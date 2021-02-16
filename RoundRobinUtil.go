@@ -16,15 +16,15 @@ type RoundRobinUtil struct {
 	// 轮询数量
 	number uint
 	// 轮询计数
-	count uint64
+	count uint32
 }
 
 // 获取下一个轮询索引
-func (u *RoundRobinUtil) Next() uint64 {
+func (u *RoundRobinUtil) Next() uint32 {
 	if u.number <= 0 {
 		return 0
 	}
 
 	// 轮询计数递增,并取模
-	return (atomic.AddUint64(&u.count, 1) - 1) % uint64(u.number)
+	return (atomic.AddUint32(&u.count, 1) - 1) % uint32(u.number)
 }
