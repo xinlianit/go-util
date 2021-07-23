@@ -36,7 +36,7 @@ func (u Path) GetCurrentPath() string {
 	tempDir, _ := filepath.EvalSymlinks(os.TempDir())
 
 	if strings.Contains(execPath, tempDir) {
-		return u.GetCurrentByCaller()
+		return u.GetCurrentPathByCaller()
 	}
 
 	return execPath
@@ -56,14 +56,15 @@ func (u Path) GetCurrentPathByExecutable() string {
 	realPath, _ := filepath.EvalSymlinks(execPath)
 	if err != nil {
 		log.Fatal(err)
+		return ""
 	}
 
-	return realPath
+	return path.Dir(realPath)
 }
 
-// GetCurrentByCaller 获取当前绝路径 - 通过运行路径
+// GetCurrentPathByCaller 获取当前绝路径 - 通过运行路径
 // @return string 当前文件绝对路径
-func (u Path) GetCurrentByCaller() string {
+func (u Path) GetCurrentPathByCaller() string {
 	var runPath string
 	_, file, _, ok := runtime.Caller(2)
 	if ok {
