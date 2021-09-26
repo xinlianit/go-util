@@ -33,7 +33,7 @@ func (u Crypto) Md5(data string) string {
 
 // PasswordHash 密码加密
 // @param password 密码
-func PasswordHash(password string) (string, error) {
+func (u Crypto) PasswordHash(password string) (string, error) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	return string(bytes), err
 }
@@ -41,7 +41,7 @@ func PasswordHash(password string) (string, error) {
 // PasswordVerify 密码验证
 // @param password 密码
 // @param hash 加密串
-func PasswordVerify(password, hash string) bool {
+func (u Crypto) PasswordVerify(password, hash string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
 	return err == nil
 }
